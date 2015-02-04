@@ -80,6 +80,17 @@ angular.module("configuration/configuration.tpl.html", []).run(["$templateCache"
     "            </div>\n" +
     "          </div>\n" +
     "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"characters-{{ $index }}\" class=\"col-sm-3 control-label\">Characters</label>\n" +
+    "          <div class=\"col-sm-9\">\n" +
+    "            <div class=\"input-group\">\n" +
+    "              <span class=\"input-group-addon\">\n" +
+    "                <input type=\"checkbox\" ng-model=\"exception.characters.override\">\n" +
+    "              </span>\n" +
+    "              <input id=\"characters-{{ $index }}\" type=\"text\" class=\"form-control\" ng-model=\"exception.characters.value\" ng-disabled=\"!exception.characters.override\" />\n" +
+    "            </div>\n" +
+    "          </div>\n" +
+    "        </div>\n" +
     "      </li>\n" +
     "    </ul>\n" +
     "  </div>\n" +
