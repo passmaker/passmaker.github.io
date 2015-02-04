@@ -2,7 +2,7 @@ angular.module('templates-app', ['configuration/configuration.tpl.html', 'genera
 
 angular.module("configuration/configuration.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("configuration/configuration.tpl.html",
-    "<form name=\"configuration\" class=\"form-horizontal\" role=\"form\">\n" +
+    "<form name=\"configuration\" class=\"form-horizontal\" role=\"form\" novalidate>\n" +
     "  <div class=\"panel panel-default\">\n" +
     "    <div class=\"panel-heading\">Defaults</div>\n" +
     "    <div class=\"panel-body\">\n" +
