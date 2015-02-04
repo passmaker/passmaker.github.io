@@ -94,7 +94,7 @@ angular.module("configuration/configuration.tpl.html", []).run(["$templateCache"
 
 angular.module("generator/generator.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("generator/generator.tpl.html",
-    "<div ng-if=\"error\" class=\"alert alert-danger\" role=\"alert\"\">\n" +
+    "<div ng-if=\"error\" class=\"alert alert-danger\" role=\"alert\">\n" +
     "  <i class=\"fa fa-exclamation-triangle\"></i>\n" +
     "  {{ error }}\n" +
     "</div>\n" +
@@ -105,7 +105,7 @@ angular.module("generator/generator.tpl.html", []).run(["$templateCache", functi
     "      <div class=\"input-group\">\n" +
     "        <input id=\"masterPassword\" type=\"password\" class=\"form-control\" ng-model=\"masterPassword\" ng-change=\"generatePassword()\" />\n" +
     "        <div class=\"input-group-addon\">\n" +
-    "          <span class=\"master-password-control-hash\"><i class=\"fh-qr-{{controlHash}}\"></i></span>\n" +
+    "          <span class=\"master-password-control-hash\">{{controlHash}}</span>\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +
