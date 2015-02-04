@@ -1,5 +1,6 @@
 angular.module('passmaker.configuration', [
-  'ui.router'
+  'ui.router',
+  'ui.bootstrap.modal'
 ])
 
 .config(["$stateProvider", function($stateProvider) {
@@ -11,7 +12,7 @@ angular.module('passmaker.configuration', [
   });
 }])
 
-.controller('ConfigurationCtrl', ["$scope", "profile", "pMaker", "passMakerConf", function($scope, profile, pMaker, passMakerConf) {
+.controller('ConfigurationCtrl', ["$scope", "profile", "pMaker", "passMakerConf", "$modal", function($scope, profile, pMaker, passMakerConf, $modal) {
 
   $scope.hashAlgorithms = pMaker.supportedAlgorithms();
 
@@ -36,12 +37,12 @@ angular.module('passmaker.configuration', [
 
 
   $scope.showConfiguration = function() {
-//     var stringProfile = angular.toJson(profile, true);
-//     $modal({
-//       title: 'Configuration',
-//       content:'<pre>' + stringProfile + '</pre>',
-//       html: true
-//     });
+    var stringProfile = angular.toJson(profile, true);
+    $modal({
+      title: 'Configuration',
+      content:'<pre>' + stringProfile + '</pre>',
+      html: true
+    });
   };
 
   $scope.saveConfiguration = function() {
