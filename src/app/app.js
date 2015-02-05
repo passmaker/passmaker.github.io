@@ -34,6 +34,7 @@ angular.module( 'passmaker', [
 .run(["$location", "$window", function($location, $window) {
   // force https protocol on domain passmaker.github.io (production)
   if ('https' != $location.protocol() && 'passmaker.github.io' == $location.host()) {
+    console.log('Detected unsecure protocol, redirecting to https version');
     $window.location.href = $location.absUrl().replace((/^http:/, 'https:'));
   }
 }])
