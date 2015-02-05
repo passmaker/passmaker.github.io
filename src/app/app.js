@@ -31,10 +31,14 @@ angular.module( 'passmaker', [
   $urlRouterProvider.otherwise('/generator');
 }])
 
-.run(function () {
-})
+.run(["$location", "$window", function($location, $window) {
+  // force https protocol on domain passmaker.github.io (production)
+  if ('https' != $location.protocol() && 'passmaker.github.io' == $location.host()) {
+    $window.location.href = $location.absUrl().replace((/^http:/, 'https:'));
+  }
+}])
 
-.controller('PassMakerCtrl', ["$scope", "$location", "gAuth", "passMakerConf", function($scope, $location, gAuth, passMakerConf) {
+.controller('PassMakerCtrl', ["$scope", "gAuth", "passMakerConf", function($scope, gAuth, passMakerConf) {
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     if (angular.isDefined(toState.data.pageTitle)) {
       $scope.pageTitle = toState.data.pageTitle ;
