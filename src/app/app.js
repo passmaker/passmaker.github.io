@@ -12,14 +12,6 @@ angular.module( 'passmaker', [
 
 .constant('passMakerVersion', 'v0.1.0')
 
-.constant('googleClientConfiguration', {
-  clientId: '452858183186-vnq9jcgt1heeveppo8nrnsvn1sep0q15.apps.googleusercontent.com',
-  scopes: [
-    'https://www.googleapis.com/auth/drive.file'
-  ],
-  domain: 'localhost'
-})
-
 .constant('gAuthConfiguration', {
   clientId: '452858183186-vnq9jcgt1heeveppo8nrnsvn1sep0q15.apps.googleusercontent.com',
   scopes: [
@@ -48,19 +40,22 @@ angular.module( 'passmaker', [
 
   $scope.ready = false;
 
-  gAuth.check().then(function(authResult) {
-      console.log('Authentication check completed');
-      console.log(authResult);
-      $scope.ready = true;
-      passMakerConf.load();
-    }, function(authResult) {
-      console.log('Authentication check failed');
-      console.log(authResult);
-      $scope.ready = false;
-    });
-  
+  var onAuthSuccess = function(authResult) {
+    console.log('Authentication check completed');
+    console.log(authResult);
+    $scope.ready = true;
+    passMakerConf.load();
+  };
+  var onAuthFailure = function(authResult) {
+    console.log('Authentication check failed');
+    console.log(authResult);
+    $scope.ready = false;
+  };
+
+  gAuth.check().then(onAuthSuccess, onAuthFailure);
+
   $scope.login = function() {
-    gAuth.login();
+    gAuth.login().then(onAuthSuccess, onAuthFailure);
   };
 
 }])
