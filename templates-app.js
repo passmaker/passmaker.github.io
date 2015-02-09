@@ -33,16 +33,20 @@ angular.module("configuration/configuration.tpl.html", []).run(["$templateCache"
     "  <div class=\"panel panel-default\">\n" +
     "    <div class=\"panel-heading\">Exceptions</div>\n" +
     "    <div class=\"panel-body\">\n" +
-    "      <div class=\"alert alert-info\" role=\"alert\">\n" +
-    "        <i class=\"fa fa-info pull-left\" style=\"font-size: 2em\"></i>\n" +
+    "      <div class=\"bs-callout bs-callout-info\" id=\"callout-helper-bg-specificity\">\n" +
+    "        <h4>\n" +
+    "          <i class=\"fa fa-info pull-left\"></i>\n" +
+    "          Dealing with specificity\n" +
+    "        </h4>\n" +
     "        <p>\n" +
-    "          Exceptions allow per service configuration in order to comply to specific service security policy.\n" +
+    "          Sometimes, in the best case, web sites password policy are more strict than your default configuration, or in the worst case the password generated isn't accepted by the service provider security policy. For these cases, you wan override the main configuration:\n" +
+    "          <ul>\n" +
+    "            <li>password length</li>\n" +
+    "            <li>add a <em>modifier</em> to alter the generated password</li>\n" +
+    "            <li>change the caracter set used to generate the password</li>\n" +
+    "          </ul>\n" +
     "        </p>\n" +
     "      </div>\n" +
-    "      <button class=\"btn btn-success pull-right\" ng-click=\"addException()\"><i class=\"fa fa-plus-circle\"></i> Add exception</button>\n" +
-    "      <p>\n" +
-    "        You can modify the Password length to truncate the password.<br />\n" +
-    "        Use the modifier to change the generated password. You should use this typically when a service has been compromised. This is also useful to avoid a password with a special character not handled correctly by the service.\n" +
     "      </p>\n" +
     "    </div>\n" +
     "    <ul class=\"list-group\">\n" +
@@ -91,6 +95,12 @@ angular.module("configuration/configuration.tpl.html", []).run(["$templateCache"
     "            </div>\n" +
     "          </div>\n" +
     "        </div>\n" +
+    "      </li>\n" +
+    "      <li class=\"list-group-item\">\n" +
+    "        <div class=\"pull-right\">\n" +
+    "          <button class=\"btn btn-success\" ng-click=\"addException()\"><i class=\"fa fa-plus-circle\"></i> Add exception</button>\n" +
+    "        </div>\n" +
+    "        <span class=\"clearfix\"></span>\n" +
     "      </li>\n" +
     "    </ul>\n" +
     "  </div>\n" +
